@@ -32,9 +32,9 @@ public class PurchaseHistoryDaoImpl implements PurchaseHistoryDao {
 			" FROM" +
 			"    sale_line sl" +
 			"    INNER JOIN item i" +
-			"        on sl.ITEM_ID = i.ITEM_ID" +
+			"        ON sl.ITEM_ID = i.ITEM_ID" +
 			"    INNER JOIN sale s" +
-			"        on s.SALE_ID = sl.SALE_ID" +
+			"        ON s.SALE_ID = sl.SALE_ID" +
 			" WHERE" +
 			"    s.USER_ID = ?" +
 			" ORDER BY" +
