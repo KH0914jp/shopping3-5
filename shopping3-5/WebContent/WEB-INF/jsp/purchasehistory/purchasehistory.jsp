@@ -10,22 +10,22 @@
 		<h2>w“ü—š—ğ‰æ–Ê</h2>
 		<table border="1">
 			<tr class="header">
-				<th align="center" width="80">w“ü“ú</th>
-				<th align="center" width="320">¤•iID</th>
-				<th align="center" width="320">¤•i–¼</th>
+				<th align="center" width="320">w“ü“ú</th>
+				<th align="center" width="80">¤•iID</th>
+				<th align="center" width="200">¤•i–¼</th>
 				<th align="center" width="100">ŒÂ”</th>
 				<th align="center" width="100">‰¿Ši</th>
 			</tr>
 			<c:forEach items="${purchasehistory}" var="itemSet">
 				<tr>
-					<td>${itemSet.updateTime}</td>
-					<td>${itemSet.itemId}</td>
-					<td>${itemSet.itemName}</td>
-					<td>${itemSet.quantity}</td>
-					<td>${itemSet.price}</td>
+					<td align="left">${itemSet.updateTime}</td>
+					<td align="center">${itemSet.itemId}</td>
+					<td align="left">${itemSet.itemName}</td>
+					<td align="right">${itemSet.quantity}</td>
+					<td align="right">${itemSet.quantity * itemSet.price}‰~</td>
 				</tr>
 			</c:forEach>
-		</table>
+		</table><br>
 		<a href="../index/index.html">¡ˆê——‚É–ß‚é</a>
 	</div>
 </body>

@@ -85,7 +85,7 @@ public class CartController {
 		}
 
 		// カート情報を設定
-		ModelAndView modelAndView = new ModelAndView("/cart/cart");
+		ModelAndView modelAndView = new ModelAndView("cart/cart");
 		modelAndView.addObject("cart", cart);
 
 		// ログインユーザを取得

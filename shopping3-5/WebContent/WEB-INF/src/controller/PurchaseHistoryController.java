@@ -9,17 +9,17 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import exception.LoginRequiredException;
 import logic.PurchaseHistory;
 import logic.PurchaseHistorySet;
 import logic.User;
 import utils.WebConstants;
 
 @Controller
-public class PurchasehistoryController {
+public class PurchaseHistoryController {
 
 	@Autowired
 	private PurchaseHistory purchaseHistory;
-
 
 	// end.jspで指定している購入履歴画面遷移先リンク
 	@RequestMapping(value = "/purchasehistory/purchasehistory")
@@ -29,9 +29,10 @@ public class PurchasehistoryController {
 
 		// ログインユーザを取得
 		User loginUser = (User) session.getAttribute(WebConstants.USER_KEY);
-		if (loginUser != null) {
-			modelAndView.addObject("loginUser", loginUser);
+		if (loginUser == null) {
+			throw new LoginRequiredException("ログインしていません。");
 		}
+		modelAndView.addObject("loginUser", loginUser);
 
 		// UserIdを引数にサービスクラス呼び出しメソッドを実行し、変数に購入履歴取得結果を格納
 		List<PurchaseHistorySet> purchaseHistorySet= purchaseHistory.getPurchaseHistoryList(loginUser.getUserId());

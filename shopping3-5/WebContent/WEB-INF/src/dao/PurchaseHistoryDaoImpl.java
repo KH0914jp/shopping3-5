@@ -23,7 +23,23 @@ public class PurchaseHistoryDaoImpl implements PurchaseHistoryDao {
 	}
 
 	// 購入履歴取得SQL
-	private static final String SELECT_PURCHASEHISTORY = "select sale_line.UPDATE_TIME, sale_line.ITEM_ID, sale_line.QUANTITY,   item.ITEM_NAME, item.PRICE from sale_line inner join item on sale_line.ITEM_ID = item.item_id inner join sale on sale.SALE_ID = sale_line.SALE_ID WHERE sale.USER_ID = ? ORDER BY sale_line.UPDATE_TIME DESC, sale_line.ITEM_ID ASC";
+	private static final String SELECT_PURCHASEHISTORY = "SELECT" +
+			"    sl.UPDATE_TIME" +
+			"    , sl.ITEM_ID" +
+			"    , sl.QUANTITY" +
+			"    , i.ITEM_NAME" +
+			"    , i.PRICE" +
+			" FROM" +
+			"    sale_line sl" +
+			"    INNER JOIN item i" +
+			"        on sl.ITEM_ID = i.ITEM_ID" +
+			"    INNER JOIN sale s" +
+			"        on s.SALE_ID = sl.SALE_ID" +
+			" WHERE" +
+			"    s.USER_ID = ?" +
+			" ORDER BY" +
+			"    sl.UPDATE_TIME DESC" +
+			"    , sl.ITEM_ID ASC;";
 
 	// 購入履歴取得SQL実行メソッド
 	public List<PurchaseHistorySet> getPurchasehistory(String userId) {
