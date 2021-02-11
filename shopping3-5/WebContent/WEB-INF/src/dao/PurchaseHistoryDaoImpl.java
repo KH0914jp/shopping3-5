@@ -39,7 +39,7 @@ public class PurchaseHistoryDaoImpl implements PurchaseHistoryDao {
 			"    s.USER_ID = ?" +
 			" ORDER BY" +
 			"    sl.UPDATE_TIME DESC" +
-			"    , sl.ITEM_ID ASC;";
+			"    , sl.ITEM_ID ASC";
 
 	// 購入履歴取得SQL実行メソッド
 	public List<PurchaseHistorySet> getPurchasehistory(String userId) {
